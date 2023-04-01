@@ -6,16 +6,13 @@
 	$clotheController = new clotheController();
 
 	if(!isset($_GET['clothe_id'])){
-
 		exit();
 	}
-	//pega a peça de id igual a $_GET['clothe_id']
+
 	$clothePurchased = json_decode($clotheController->getclothe($_GET['clothe_id']));
 
-	//realiza a "compra"
 	$clotheController->buy($clothePurchased->id);
 
-	//realiza a recomendação de 3 peças de roupa
 	$top3 = $functions->getRecommendation($clothePurchased);	
 
 ?>
@@ -25,8 +22,9 @@
 		<title>Final</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="view/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />
 	</head>
-	<body>
+	<body style="font-family: 'Poppins';">
 		<h1 class="title">Purchase made</h1>
 
 		<div id="final" class="container">
@@ -43,7 +41,7 @@
 				</div>
 			</div>
 
-			<p>O item <strong><?= $clothePurchased->name ?></strong> has been added to your shopping list.</p>
+			<p><strong><?= $clothePurchased->name ?></strong> has been added to your shopping list.</p>
 			<a href="?p=home">Back</a>					
 		</div>
 
@@ -80,7 +78,7 @@
 				}
 			}else{
 				?>
-				<h2 style="color: #000;">Few parts available for recommendation</h2>
+				<h2 style="color: #000;">Few cloths available for recommendation</h2>
 				<?php
 			}
 			?>

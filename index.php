@@ -1,5 +1,4 @@
 <?php
-	
 	if(!isset($_GET['p'])){
 		return require_once('./view/home.php');
 	}
@@ -20,5 +19,4 @@
 			require_once('./view/home.php');
 			break;
 	}
-
 ?>
